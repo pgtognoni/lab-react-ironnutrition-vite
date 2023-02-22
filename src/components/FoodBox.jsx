@@ -9,7 +9,7 @@ function FoodBox(props) {
 
   return (
     <Col>
-        <Card key={id} title={name} style={{ width: 230, margin: 10 }} className='food-card'>
+        <Card title={name} style={{ width: 230, margin: 10 }} className='food-card'>
             <div className='food-body'>
                 <div className='food-image'>
                     <img src={imageSrc} alt={name} />

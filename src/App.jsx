@@ -5,6 +5,7 @@ import foodsJson from './foods.json'
 import FoodBox from './components/FoodBox'
 import AddFoodForm from './components/AddFoodForm'
 import { v4 as uuidv4 }  from 'uuid'
+import SearchFood from './components/SearchFood'
 
 function App() {
   const data = foodsJson
@@ -51,14 +52,12 @@ function App() {
           />
         : null }
         <button className='show-form' onClick={() => setFormActive(!formActive)}>{!formActive ? 'Add Food' : 'Hide form'}</button>
-        <label for='search'>Search
-          <Input type='text' name='search' id='search' placeholder='Search' onChange={(e) => searchFood(e.target.value)} />
-        </label>
+        <SearchFood searchFood={searchFood} />
       </div>
       <div className='food-list'>
         {foods.length > 0 
         ? foods.map((food) => 
-          <FoodBox food={food} deleteFood={deleteFood} />
+          <FoodBox food={food} deleteFood={deleteFood} key={food.id}/>
           )
         : <h1>There's no food here!</h1>}
       </div>
