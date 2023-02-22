@@ -45,13 +45,12 @@ function App() {
   return (
     <div className="App">
       <div className="form-box">
-      {formActive 
-        ? <AddFoodForm name={name} calories={calories} image={image} servings={servings}
+      {formActive &&
+        <AddFoodForm name={name} calories={calories} image={image} servings={servings}
             setName={setName} setCalories={setCalories} setImage={setImage} setServings={setServings} 
             addFood={addFood}
-          />
-        : null }
-        <button className='show-form' onClick={() => setFormActive(!formActive)}>{!formActive ? 'Add Food' : 'Hide form'}</button>
+          />}
+        <button className='show-form' onClick={() => setFormActive(!formActive)}>{formActive ? 'Hide form' : 'Add Food'}</button>
         <SearchFood searchFood={searchFood} />
       </div>
       <div className='food-list'>
