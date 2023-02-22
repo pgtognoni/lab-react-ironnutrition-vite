@@ -6,14 +6,18 @@
 
 .App {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
 }
 
 .form-box {
   display: grid;
   grid-template-columns: 1fr;
 }
-
+.food-list {
+  display: flex;
+  flex-wrap: wrap;
+}
 .food-card {
   text-align: left;
   height: 100%;
@@ -29,4 +33,11 @@ label[for='search'] {
   width: 60%;
   margin: auto auto;
   margin-bottom: 2rem;
+}
+
+.show-form {
+  max-width: 100px;
+  padding: 0;
+  width: 100px;
+  margin: auto;
 }

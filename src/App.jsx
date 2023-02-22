@@ -13,6 +13,7 @@ function App() {
   const [ calories, setCalories ] = useState(0)
   const [ image, setImage ] = useState('')
   const [ servings, setServings ] = useState(0)
+  const [ formActive, setFormActive ] = useState(false)
 
   useEffect(() => {
     const newArr = data.map(food => { return {...food, id: uuidv4()} })
@@ -43,17 +44,24 @@ function App() {
   return (
     <div className="App">
       <div className="form-box">
-        <AddFoodForm name={name} calories={calories} image={image} servings={servings}
+      {formActive 
+        ? <AddFoodForm name={name} calories={calories} image={image} servings={servings}
             setName={setName} setCalories={setCalories} setImage={setImage} setServings={setServings} 
             addFood={addFood}
           />
+        : null }
+        <button className='show-form' onClick={() => setFormActive(!formActive)}>{!formActive ? 'Add Food' : 'Hide form'}</button>
         <label for='search'>Search
           <Input type='text' name='search' id='search' placeholder='Search' onChange={(e) => searchFood(e.target.value)} />
         </label>
       </div>
-      {foods.map((food) => 
-        <FoodBox food={food} deleteFood={deleteFood} />
-      )}
+      <div className='food-list'>
+        {foods.length > 0 
+        ? foods.map((food) => 
+          <FoodBox food={food} deleteFood={deleteFood} />
+          )
+        : <h1>There's no food here!</h1>}
+      </div>
     </div>
   )
 }
